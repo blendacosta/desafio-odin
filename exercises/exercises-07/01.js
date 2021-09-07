@@ -2,4 +2,5 @@
  *  1. Crie um objeto de data com a data de hoje.
  */
 
-console.log(Date());
+const dataAtual = new Date();
+console.log(dataAtual.toString());
