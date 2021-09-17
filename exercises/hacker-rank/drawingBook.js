@@ -9,9 +9,6 @@ if (p === 1) {
     count = Math.floor(pages.indexOf(p)/2);
 }  else {
     count = Math.floor(pages.reverse().indexOf(p)/2);
-    if(pages.length%2 !== 0) {
-        count = 1;
-    }
 }
 console.log(pageCount(5,4))
 console.log(pageCount(6,5)) // error, expect => 1
