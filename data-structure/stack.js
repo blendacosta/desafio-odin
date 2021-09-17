@@ -47,6 +47,10 @@ class Stack {
         return this._items[this._count - 1];
     }
 
+    size() {
+        return this._count;
+    }
+
     isEmpty() {
         return this._count === 0;
     }
@@ -54,5 +58,4 @@ class Stack {
     isFull() {
         return this._count === this._capacity;
     }
-
 }
