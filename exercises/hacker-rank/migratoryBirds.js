@@ -14,3 +14,5 @@ function migratoryBirds(arr) {
         }
     } return type;
 }
+
+// not the best option, fails the time test
