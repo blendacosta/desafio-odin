@@ -1,61 +1,51 @@
 /**
- *  Queue(Fila) => FIFO
- *  
- *  Interface:
- *  1. Constructor Function
- *      1.1. Storage
- *  2. Methods:
- *      2.1. Enqueue(el) // adds an element to the queue, returns size
- *      2.2. Dequeue() // removes an element from the queue returns the element
- *      2.3. Size() // returns size of the queue as an integer
- *      2.4. isEmpty()
- *      2.5. isFull()
- *      2.6. Peek()
+ *  Queue(Fila) >> FIFO
  */
 
 class Queue {
-    constructor(capacity) {
-        this._capacity = capacity;
-        this._items = [];
-        this._count = 0;
+    constructor() {
+        this.items = [];
+        this.start = null;
+        this.end = null;
     }
 
-    enqueue(el) {
-        if (this.isFull()) {
-            console.log('Queue is full!');
+    size() {
+        return this.items.length;
+    }
+
+    isEmpty() {
+        return this.size() === 0;
+    }
+
+    getStart() {
+        if (!this.isEmpty()) {
+            return this.start;
         } else {
-            this._items.push(el);
-            this._count++;
+            return null;
+        }
+    }
+
+    enqueue(element) {
+        const el = this.items.push(element);
+        this.end = el;
+        if (this.size() === 1) {
+            this.start = el;
         }
         return this;
     }
 
     dequeue() {
         if (this.isEmpty()) {
-            console.log('Queue is empty!');
+            return null;
         } else {
-            this._count--;
-            return this._items.shift();
-        }
-    }
-
-    size () {
-        return this._count;
-    }
-
-    isEmpty() {
-        return this._count === 0;
-    }
-
-    isFull() {
-        return this._count === this._capacity;
-    }
-
-    peek() {
-        if (this.isEmpty()) {
-            console.log('Queue is empty!');
-        } else {
-            return this._items[0];
+            if (this.size() === 1) {
+                this.start = null;
+                this.end = null;
+                return this.items.shift();
+            } else {
+                this.start = this.items[this.size() - 2];
+                return this.items.shift();
+            }
         }
     }
 }
