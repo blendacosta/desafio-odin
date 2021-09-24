@@ -2,7 +2,7 @@
  *  Queue(Fila) >> FIFO
  */
 
-class Queue {
+module.exports = class Queue {
     constructor() {
         this.items = [];
         this.start = null;
