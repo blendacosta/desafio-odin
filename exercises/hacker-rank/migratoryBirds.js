@@ -1,18 +1,16 @@
-// fonte: https://javascript.plainenglish.io/javascript-algorithm-migratory-birds-848ad6a99ac3
-
 function migratoryBirds(arr) {
-    let largest = 1;
-    let counter = largest;
-    let type = 0;
-    arr.sort();
-    const length = arr.length;
-    for (let i = 0; i < length; i++) {
-        largest = (arr.lastIndexOf(arr[i]) - arr.indexOf(arr[i])) + 1;
-        if (largest > counter) {
-            counter = largest;
-            type = arr[i];
+    let birds = {};
+    for (let type of arr) {
+        if (!(birds[type])) {
+            birds[type] = 0;
         }
-    } return type;
+        birds[type]++;
+    }
+    const elements = Object.entries(birds);
+    const sorted = elements.sort((a, b) => b[1] - a[1]);
+
+    return sorted[0][0];
 }
 
-// not the best option, fails the time test
+migratoryBirds([1,2,3,4,5,4,3,2,1,3,4])
+// migratoryBirds([1,4,4,4,5,3])
