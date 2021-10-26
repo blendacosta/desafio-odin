@@ -1,9 +1,9 @@
 const longestConsec = (strarr, k) => {
   let result = '';
-  if (strarr.length == 0 || k > strarr.length || k <= 0) {
-    return '';
-  }
   let len = strarr.length;
+  if (len == 0 || k > len || k <= 0) {
+    return result;
+  }
   for (let i = 0; i < len; i++) {
     let str = strarr.slice(i, i + k).join('');
     if (str.length > result.length) {
